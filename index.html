@@ -108,7 +108,7 @@
         /* Mobile Menu Toggle */
         .mobile-menu {
             display: none;
-            position: absolute;
+            position: fixed;
             top: 80px;
             left: 0;
             right: 0;
@@ -116,7 +116,10 @@
             flex-direction: column;
             gap: 1rem;
             padding: 1.5rem;
-            z-index: 20;
+            z-index: 25;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .mobile-menu.active {
@@ -208,7 +211,7 @@
 
         <!-- Hero Section -->
         <div class="relative overflow-hidden w-full">
-            <div class="hero-container" style="background-image: url('./assets/hero-bg.jpg'); margin-top: 80px;" style="margin-top: 80px">
+            <div class="hero-container" style="background-image: url('./assets/hero-bg.jpg'); margin-top: 80px;">
                 <div class="absolute inset-0 bg-black/30 z-[5]"></div>
                 
                 <div class="hero-content w-full md:w-2/3 lg:w-1/2">
