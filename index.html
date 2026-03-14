@@ -40,9 +40,9 @@
             .hero-container {
                 height: calc(100vh - 80px);
                 min-height: 450px;
-                margin-top: 80px;
                 background-position: center;
                 background-size: cover;
+                background-attachment: scroll;
             }
 
             .hero-content {
@@ -55,9 +55,9 @@
             .hero-container {
                 height: calc(100vh - 90px);
                 min-height: 550px;
-                margin-top: 90px;
                 background-position: center;
                 background-size: cover;
+                background-attachment: scroll;
             }
 
             .hero-content {
@@ -70,9 +70,9 @@
             .hero-container {
                 height: 100vh;
                 min-height: 700px;
-                margin-top: 90px;
                 background-position: center;
                 background-size: cover;
+                background-attachment: fixed;
             }
 
             .hero-content {
@@ -109,7 +109,7 @@
         .mobile-menu {
             display: none;
             position: absolute;
-            top: 90px;
+            top: 80px;
             left: 0;
             right: 0;
             background-color: #00CAFF;
@@ -208,7 +208,7 @@
 
         <!-- Hero Section -->
         <div class="relative overflow-hidden w-full">
-            <div class="hero-container" style="background-image: url('./assets/hero-bg.jpg');">
+            <div class="hero-container" style="background-image: url('./assets/hero-bg.jpg'); margin-top: 80px;" style="margin-top: 80px">
                 <div class="absolute inset-0 bg-black/30 z-[5]"></div>
                 
                 <div class="hero-content w-full md:w-2/3 lg:w-1/2">
