@@ -22,7 +22,7 @@
 
 <body>
     <header>
-        <nav class="h-[90px] bg-[#29ABE2] text-amber-50 px-2 fixed top-0 right-0 left-0 z-20">
+        <nav class="h-[90px] bg-[#00CAFF] text-amber-50 px-2 fixed top-0 right-0 left-0 z-20">
             <ul class="flex justify-between list-none p-7 items-center">
                 <li>
                     <h2 class="font-bold text-2xl"><a href="">MedCollab</a></h2>
@@ -37,7 +37,7 @@
             </ul>
         </nav>
         <!--intro start-->
-        <div class="">
+        <div class="my-[90px]">
             <div class="relative overflow-hidden w-full h-190">
                 <img src="./assets/hero-bg.jpg" alt="" class="absolute -z-10 h-full w-full object-cover">
                 <div class="relative z-10 mx-20 my-45">
@@ -46,18 +46,94 @@
                     <p class="w-150 text-amber-50 text-xl">Access appointments, prescriptions, medical reports,
                         and real-time health insights — all in one seamless
                         experience designed for patients.</p>
-                    <button class="bg-[#29ABE2] cursor-pointer bg-cyan-500 shadow-lg shadow-cyan-500/50 w-60 h-10 rounded-3xl text-amber-50 text-xl whitespace-nowrap my-6">View My Dashboard</button> <br>
-                    <button class="cursor-pointer w-60 h-10 rounded-3xl text-[#29ABE2] text-xl whitespace-nowrap bg-amber-50">Book Appointment</button>
+                    <button
+                        class="bg-[#53CBF3] cursor-pointer bg-cyan-500 shadow-lg shadow-cyan-500/50 w-60 h-10 rounded-3xl text-amber-50 text-xl whitespace-nowrap my-6">View
+                        My Dashboard</button> <br>
+                    <button
+                        class="cursor-pointer w-60 h-10 rounded-3xl text-[#53CBF3] text-xl whitespace-nowrap bg-amber-50">Book
+                        Appointment</button>
                 </div>
             </div>
         </div>
     </header>
-    <!--services start-->
+    <!--About start-->
     <main>
-        <section class="bg-[#29ABE2] w-full h-96">
+        <section class="bg-[#0065F8] w-full py-20 flex flex-col items-center justify-center my-[-90px]" id="About">
 
+            <div class="text-amber-50 max-w-3xl p-5 text-center">
+                <h2 class="font-bold text-4xl pb-5">About MedCollab</h2>
+
+                <p class="text-lg pb-5">
+                    MedCollab is a data-driven healthcare platform designed to transform complex medical data into
+                    meaningful and actionable insights. By analyzing uploaded medical parameters, the system evaluates
+                    health trends, detects potential risk factors, and organizes large volumes of patient data with
+                    precision and clarity.
+                </p>
+
+                <p class="text-lg pb-5">
+                    Our platform simplifies medical information and presents it through a structured and intuitive
+                    dashboard, enabling patients, consultants, and researchers to collaborate and make well-informed
+                    decisions with confidence.
+                </p>
+
+                <p class="text-lg pb-5">
+                    Through intelligent analytics and secure data processing, MedCollab supports a proactive approach to
+                    healthcare, helping users monitor patterns, understand risks, and respond to health concerns before
+                    they escalate.
+                </p>
+            </div>
+
+            <div class="text-amber-50 max-w-2xl text-center px-6">
+                <h2 class="font-bold text-4xl pb-5">Our Vision</h2>
+
+                <p class="text-lg">
+                    To create a healthcare ecosystem where data is organized, accessible, and meaningful-empowering
+                    smarter decisions and better outcomes.
+                </p>
+            </div>
+        </section>
+        <!--Services start-->
+        <section class="bg-[#4300FF] w-full text-amber-50 my-[90px]" id="Services">
+            <h3 class="text-5xl text-center font-bold  py-[120px] pb-[60px]">Our Services</h3>
+            <div class="grid grid-cols-6 grid-rows-3 gap-7 mx-[200px] pb-[120px]" id="grid2">
+                <div class="bg-[#0065F8] p-[40px] rounded-4xl row-span-2 col-span-2 grid items-center">
+                    <i class="fa-solid fa-chart-column fa-3x"></i>
+                    <h4 class="text-2xl font-bold">Health Data <br>Analysis</h4>
+                    <p>Turn large and complex healthcare data into clear, actionable insights, enabling doctors and
+                        researchers to make informed decisions, improve diagnoses, plan personalized treatments, and
+                        enhance patient outcomes through data-driven intelligence.
+                    </p>
+                </div>
+                <div class="bg-[#0065F8] rounded-4xl col-span-4 p-[40px]">
+                    <i class="fa-solid fa-arrow-up-right-dots fa-2x"></i>
+                    <h4 class="text-2xl font-bold pb-4 pt-4">Risk Factor Detection</h4>
+                    <p class="text-justify">Identify potential health risks early by analyzing patterns in patient data, helping doctors take
+                        preventive action.</p>
+                </div>
+                <div class="bg-[#0065F8] rounded-4xl col-span-4 p-[40px]">
+                    <i class="fa-solid fa-chart-line fa-2x"></i>
+                    <h4 class="text-2xl font-bold pb-4 pt-4">Predictive Insights</h4>
+                    <p>Use advanced analytics to forecast health trends and possible medical conditions before they
+                        become critical.</p>
+                </div>
+                <div class="bg-[#0065F8] p-[40px] rounded-4xl col-span-4 row-span-3">
+                    <i class="fa-solid fa-file-shield fa-3x"></i>
+                    <h4 class="text-2xl font-bold pb-4 pt-4">Secure Data Processing</h4>
+                    <p>Ensure patient information remains protected with strong security protocols and reliable data
+                        handling systems.</p>
+                </div>
+                <div class="bg-[#0065F8] p-[40px] rounded-4xl col-span-2 row-span-3">
+                    <i class="fa-solid fa-arrow-up-wide-short fa-3x"></i>
+                    <h4 class="text-2xl font-bold pb-4 pt-4">Bulk Data Sorting</h4>
+                    <p>Efficiently organize and manage large volumes of healthcare data for faster access, analysis, and
+                        reporting.</p>
+                </div>
+            </div>
         </section>
     </main>
+    <footer class="bg-[#0065F8] w-full h-80 my-[-90px]">
+
+    </footer>
 </body>
 
 </html>
