@@ -14,170 +14,382 @@
     <link rel="stylesheet" href="./responsive.css">
     <title>MedCollab</title>
     <style>
-        *font-inter {
+        * {
             font-family: "Inter", sans-serif;
+        }
+
+        .hero-container {
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Small devices */
+        @media (max-width: 640px) {
+            .hero-container {
+                height: calc(100vh - 80px);
+                min-height: 450px;
+                margin-top: 80px;
+                background-position: center;
+                background-size: cover;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Medium devices */
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .hero-container {
+                height: calc(100vh - 90px);
+                min-height: 550px;
+                margin-top: 90px;
+                background-position: center;
+                background-size: cover;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+        }
+
+        /* Large devices */
+        @media (min-width: 1025px) {
+            .hero-container {
+                height: 100vh;
+                min-height: 700px;
+                margin-top: 90px;
+                background-position: center;
+                background-size: cover;
+            }
+
+            .hero-content {
+                padding-left: 5rem;
+                padding-right: 2rem;
+            }
+        }
+
+        .service-card {
+            background-color: #0065F8;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .service-card {
+                padding: 2rem;
+                border-radius: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1025px) {
+            .service-card {
+                padding: 2.5rem;
+                border-radius: 2rem;
+            }
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 90px;
+            left: 0;
+            right: 0;
+            background-color: #00CAFF;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1.5rem;
+            z-index: 20;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: #fef3c7;
+            text-lg;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #fef3c7;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-btn {
+                display: block;
+            }
+
+            .desktop-menu {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger-btn {
+                display: none;
+            }
+
+            .desktop-menu {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none !important;
+            }
         }
     </style>
 </head>
 
-<body>
+<body class="bg-white">
     <header>
-        <nav class="h-[90px] bg-[#00CAFF] text-amber-50 px-2 fixed top-0 right-0 left-0 z-20">
-            <ul class="flex justify-between list-none p-7 items-center">
-                <li>
-                    <h2 class="font-bold text-2xl"><a href="">MedCollab</a></h2>
+        <!-- Navigation Bar -->
+        <nav class="h-20 md:h-[90px] bg-[#00CAFF] text-amber-50 px-4 md:px-6 fixed top-0 right-0 left-0 z-30">
+            <ul class="flex justify-between list-none p-4 md:p-7 items-center h-full">
+                <li class="text-center md:text-left">
+                    <h2 class="font-bold text-xl md:text-2xl"><a href="#">MedCollab</a></h2>
                 </li>
-                <li class="flex gap-10 justify-center items-center text-lg">
-                    <div><a href="#Services">Sevices</a></div>
+
+                <!-- Desktop Menu -->
+                <li class="desktop-menu gap-4 md:gap-10 justify-center items-center text-sm md:text-lg">
+                    <div><a href="#Services">Services</a></div>
                     <div><a href="#About">About</a></div>
-                    <div><i class="fa-solid fa-arrow-up-from-bracket"></i><a href="">&nbsp;Upload</a></div>
-                    <div><i class="fa-solid fa-user-plus"></i><a href="">&nbsp;Signup</a></div>
+                    <div><i class="fa-solid fa-arrow-up-from-bracket"></i><a href="#">&nbsp;Upload</a></div>
+                    <div><i class="fa-solid fa-user-plus"></i><a href="#">&nbsp;Signup</a></div>
                 </li>
-                <li class="text-lg"><i class="fa-solid fa-arrow-right-to-bracket"></i><a href="">&nbsp;Login</a></li>
+
+                <!-- Hamburger Button (Mobile Only) -->
+                <button class="hamburger-btn" id="hamburgerBtn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+                <!-- Desktop Login -->
+                <li class="hidden md:block text-sm md:text-lg"><i class="fa-solid fa-arrow-right-to-bracket"></i><a href="#">&nbsp;Login</a></li>
             </ul>
         </nav>
-        <!--intro start-->
-        <div class="my-[90px]">
-            <div class="relative overflow-hidden w-full h-190">
-                <img src="./assets/hero-bg.jpg" alt="" class="absolute -z-10 h-full w-full object-cover">
-                <div class="relative z-10 mx-20 my-45">
-                    <h3 class="text-amber-50 text-5xl font-bold pb-5">Your Health, Organized in One <br>
-                        Secure Dashboard</h3>
-                    <p class="w-150 text-amber-50 text-xl">Access appointments, prescriptions, medical reports,
-                        and real-time health insights — all in one seamless
-                        experience designed for patients.</p>
-                    <button
-                        class="bg-[#53CBF3] cursor-pointer bg-cyan-500 shadow-lg shadow-cyan-500/50 w-60 h-10 rounded-3xl text-amber-50 text-xl whitespace-nowrap my-6">View
-                        My Dashboard</button> <br>
-                    <button
-                        class="cursor-pointer w-60 h-10 rounded-3xl text-[#53CBF3] text-xl whitespace-nowrap bg-amber-50">Book
-                        Appointment</button>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#Services">Services</a>
+            <a href="#About">About</a>
+            <a href="#">Upload</a>
+            <a href="#">Signup</a>
+            <a href="#">Login</a>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="relative overflow-hidden w-full">
+            <div class="hero-container" style="background-image: url('./assets/hero-bg.jpg');">
+                <div class="absolute inset-0 bg-black/30 z-[5]"></div>
+                
+                <div class="hero-content w-full md:w-2/3 lg:w-1/2">
+                    <!-- Headline -->
+                    <h3 class="text-amber-50 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 md:mb-5 leading-tight">
+                        Your Health, Organized in One Secure Dashboard
+                    </h3>
+
+                    <!-- Paragraph -->
+                    <p class="text-amber-50 text-xs sm:text-sm md:text-base lg:text-xl mb-4 md:mb-6 leading-relaxed">
+                        Access appointments, prescriptions, medical reports, and real-time health insights — all in one seamless experience designed for patients.
+                    </p>
+
+                    <!-- Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+                        <button class="bg-cyan-500 cursor-pointer shadow-lg shadow-cyan-500/50 px-4 py-2 md:px-6 md:py-3 rounded-full text-amber-50 text-sm md:text-lg font-semibold hover:bg-cyan-600 transition w-full sm:w-auto">
+                            View My Dashboard
+                        </button>
+                        <button class="cursor-pointer px-4 py-2 md:px-6 md:py-3 rounded-full text-cyan-500 text-sm md:text-lg font-semibold bg-amber-50 hover:bg-gray-100 transition w-full sm:w-auto">
+                            Book Appointment
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-    <!--About start-->
+
+    <!-- Main Content -->
     <main>
-        <section class="bg-[#0065F8] w-full py-20 flex flex-col items-center justify-center my-[-90px]" id="About">
+        <!-- About Section -->
+        <section class="bg-[#0065F8] w-full py-12 md:py-20 lg:py-32 flex flex-col items-center justify-center px-4 md:px-6 gap-8 md:gap-12" id="About">
+            <div class="text-amber-50 max-w-xs sm:max-w-2xl md:max-w-3xl text-center">
+                <h2 class="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-4 md:mb-6">About MedCollab</h2>
 
-            <div class="text-amber-50 max-w-3xl p-5 text-center">
-                <h2 class="font-bold text-4xl pb-5">About MedCollab</h2>
-
-                <p class="text-lg pb-5">
+                <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-3 md:mb-4 leading-relaxed">
                     MedCollab is a data-driven healthcare platform designed to transform complex medical data into
                     meaningful and actionable insights. By analyzing uploaded medical parameters, the system evaluates
                     health trends, detects potential risk factors, and organizes large volumes of patient data with
                     precision and clarity.
                 </p>
 
-                <p class="text-lg pb-5">
+                <p class="text-xs sm:text-sm md:text-base lg:text-lg mb-3 md:mb-4 leading-relaxed">
                     Our platform simplifies medical information and presents it through a structured and intuitive
                     dashboard, enabling patients, consultants, and researchers to collaborate and make well-informed
                     decisions with confidence.
                 </p>
 
-                <p class="text-lg pb-5">
+                <p class="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
                     Through intelligent analytics and secure data processing, MedCollab supports a proactive approach to
                     healthcare, helping users monitor patterns, understand risks, and respond to health concerns before
                     they escalate.
                 </p>
             </div>
 
-            <div class="text-amber-50 max-w-2xl text-center px-6">
-                <h2 class="font-bold text-4xl pb-5">Our Vision</h2>
+            <div class="text-amber-50 max-w-xs sm:max-w-2xl md:max-w-3xl text-center">
+                <h2 class="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-3 md:mb-4">Our Vision</h2>
 
-                <p class="text-lg">
-                    To create a healthcare ecosystem where data is organized, accessible, and meaningful-empowering
+                <p class="text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed">
+                    To create a healthcare ecosystem where data is organized, accessible, and meaningful—empowering
                     smarter decisions and better outcomes.
                 </p>
             </div>
         </section>
-        <!--Services start-->
-        <section class="bg-[#4300FF] w-full text-amber-50 my-[90px]" id="Services">
-            <h3 class="text-5xl text-center font-bold  py-[120px] pb-[60px]">Our Services</h3>
-            <div class="grid grid-cols-6 grid-rows-3 gap-7 mx-[200px] pb-[120px]" id="grid2">
-                <div class="bg-[#0065F8] p-[40px] rounded-4xl row-span-2 col-span-2 grid items-center">
-                    <i class="fa-solid fa-chart-column fa-3x"></i>
-                    <h4 class="text-2xl font-bold">Health Data <br>Analysis</h4>
-                    <p>Turn large and complex healthcare data into clear, actionable insights, enabling doctors and
-                        researchers to make informed decisions, improve diagnoses, plan personalized treatments, and
-                        enhance patient outcomes through data-driven intelligence.
-                    </p>
+
+        <!-- Services Section -->
+        <section class="bg-[#4300FF] w-full text-amber-50 py-12 md:py-20 lg:py-32 px-4 md:px-6" id="Services">
+            <h3 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold mb-10 md:mb-16 lg:mb-20">Our Services</h3>
+            
+            <!-- Responsive Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4 md:gap-6 lg:gap-7 max-w-7xl mx-auto" id="grid2">
+                
+                <!-- 1. Health Data Analysis - Tall Card -->
+                <div class="service-card sm:col-span-1 lg:col-span-2 lg:row-span-2 min-h-[250px] sm:min-h-[300px]">
+                    <i class="fa-solid fa-chart-column fa-2x md:fa-3x mb-3 md:mb-4"></i>
+                    <h4 class="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3">Health Data Analysis</h4>
+                    <p class="text-xs md:text-sm lg:text-base leading-relaxed">Turn large and complex healthcare data into clear, actionable insights, enabling doctors and researchers to make informed decisions, improve diagnoses, plan personalized treatments, and enhance patient outcomes through data-driven intelligence.</p>
                 </div>
-                <div class="bg-[#0065F8] rounded-4xl col-span-4 p-[40px]">
-                    <i class="fa-solid fa-arrow-up-right-dots fa-2x"></i>
-                    <h4 class="text-2xl font-bold pb-4 pt-4">Risk Factor Detection</h4>
-                    <p class="text-justify">Identify potential health risks early by analyzing patterns in patient data,
-                        helping doctors take
-                        preventive action.</p>
+
+                <!-- 2. Risk Factor Detection -->
+                <div class="service-card sm:col-span-1 lg:col-span-4 min-h-[200px] sm:min-h-[220px]">
+                    <i class="fa-solid fa-arrow-up-right-dots fa-xl md:fa-2x mb-2 md:mb-3"></i>
+                    <h4 class="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3">Risk Factor Detection</h4>
+                    <p class="text-xs md:text-sm lg:text-base leading-relaxed">Identify potential health risks early by analyzing patterns in patient data, helping doctors take preventive action.</p>
                 </div>
-                <div class="bg-[#0065F8] rounded-4xl col-span-4 p-[40px]">
-                    <i class="fa-solid fa-chart-line fa-2x"></i>
-                    <h4 class="text-2xl font-bold pb-4 pt-4">Predictive Insights</h4>
-                    <p>Use advanced analytics to forecast health trends and possible medical conditions before they
-                        become critical.</p>
+
+                <!-- 3. Predictive Insights -->
+                <div class="service-card sm:col-span-1 lg:col-span-4 min-h-[200px] sm:min-h-[220px]">
+                    <i class="fa-solid fa-chart-line fa-xl md:fa-2x mb-2 md:mb-3"></i>
+                    <h4 class="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3">Predictive Insights</h4>
+                    <p class="text-xs md:text-sm lg:text-base leading-relaxed">Use advanced analytics to forecast health trends and possible medical conditions before they become critical.</p>
                 </div>
-                <div class="bg-[#0065F8] p-[40px] rounded-4xl col-span-4 row-span-3">
-                    <i class="fa-solid fa-file-shield fa-3x"></i>
-                    <h4 class="text-2xl font-bold pb-4 pt-4">Secure Data Processing</h4>
-                    <p>Ensure patient information remains protected with strong security protocols and reliable data
-                        handling systems.</p>
+
+                <!-- 4. Secure Data Processing - Large Card -->
+                <div class="service-card sm:col-span-1 lg:col-span-4 lg:row-span-3 min-h-[250px] sm:min-h-[300px]">
+                    <i class="fa-solid fa-file-shield fa-2x md:fa-3x mb-3 md:mb-4"></i>
+                    <h4 class="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3">Secure Data Processing</h4>
+                    <p class="text-xs md:text-sm lg:text-base leading-relaxed">Ensure patient information remains protected with strong security protocols and reliable data handling systems.</p>
                 </div>
-                <div class="bg-[#0065F8] p-[40px] rounded-4xl col-span-2 row-span-3">
-                    <i class="fa-solid fa-arrow-up-wide-short fa-3x"></i>
-                    <h4 class="text-2xl font-bold pb-4 pt-4">Bulk Data Sorting</h4>
-                    <p>Efficiently organize and manage large volumes of healthcare data for faster access, analysis, and
-                        reporting.</p>
+
+                <!-- 5. Bulk Data Sorting - Large Card -->
+                <div class="service-card sm:col-span-1 lg:col-span-2 lg:row-span-3 min-h-[250px] sm:min-h-[300px]">
+                    <i class="fa-solid fa-arrow-up-wide-short fa-2x md:fa-3x mb-3 md:mb-4"></i>
+                    <h4 class="text-lg md:text-xl lg:text-2xl font-bold mb-2 md:mb-3">Bulk Data Sorting</h4>
+                    <p class="text-xs md:text-sm lg:text-base leading-relaxed">Efficiently organize and manage large volumes of healthcare data for faster access, analysis, and reporting.</p>
                 </div>
+
             </div>
         </section>
     </main>
-    <!--Footer start-->
-    <footer class="bg-[#0065F8] w-full h-170 my-[-90px]">
+
+    <!-- Footer -->
+    <footer class="bg-[#0065F8] w-full px-4 md:px-6 py-10 md:py-16 lg:py-20">
         <div>
-            <div class="flex justify-between mx-20 pt-10">
-                <div>
-                    <h3 class="font-bold text-amber-50 text-7xl">For more contact and</h3>
-                    <h3 class=" text-amber-50 text-5xl">keep up to date with us</h3>
+            <!-- Contact Section -->
+            <div class="flex flex-col lg:flex-row justify-between gap-6 md:gap-8 lg:mx-20 mb-8 lg:mb-10">
+                <div class="lg:w-1/2">
+                    <h3 class="font-bold text-amber-50 text-2xl sm:text-3xl md:text-4xl lg:text-6xl leading-tight">For more contact and</h3>
+                    <h3 class="text-amber-50 text-xl sm:text-2xl md:text-3xl lg:text-4xl">keep up to date with us</h3>
                 </div>
-                <form action="">
-                    <input type="email" placeholder="Enter email" class="bg-amber-50 block w-100 h-10 mb-5 rounded-md">
-                    <textarea name="" id="" rows="10" cols="10" placeholder="Enter message" class="bg-amber-50
-                    w-100 h-20 rounded-lg"></textarea>
-                    <button type="submit"
-                        class="block bg-amber-50 text-[#0065F8] w-50 p-2 rounded-lg my-5 text-lg font-bold">Submit</button>
+                <form action="" class="lg:w-1/2">
+                    <input type="email" placeholder="Enter email" class="bg-amber-50 block w-full h-10 md:h-12 mb-4 md:mb-5 rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-400">
+                    <textarea name="" id="" rows="5" placeholder="Enter message" class="bg-amber-50 w-full h-20 md:h-24 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400 resize-none"></textarea>
+                    <button type="submit" class="block bg-amber-50 text-[#0065F8] w-full md:w-auto px-6 py-2 rounded-lg my-4 md:my-5 text-sm md:text-lg font-bold hover:bg-gray-200 transition">Submit</button>
                 </form>
             </div>
-            <hr class=" mx-10 my-5 outline-1 outline-amber-50">
-            <div class="flex justify-evenly mx-20 pt-10 text-amber-50 items-center pb-10">
-                <div>
-                    <h3 class="font-bold text-2xl text-center pb-2">Developed by</h3>
-                    <p class="text-center text-lg">Md. Mostafizur Rahaman</p>
-                    <p class="text-center text-lg">ID: 22702007 <br>Electrical and Electronic Engineering <br>University
-                        of Chittagong</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-2xl text-center pb-2">Supervisor</h3>
-                    <p class="text-center text-lg">Dr. Md Fazlul Kader</p>
-                    <p class="text-center text-lg">Professor <br>Electrical and Electronic Engineering <br>University of
-                        Chittagong</p>
-                </div>
-            </div>
-            <hr class=" mx-10 my-5 outline-1 outline-amber-50">
-            <div class="flex justify-between mx-20 pt-5 pb-5">
-                <div>
-                <p class="text-lg text-amber-50">&copy; 2026 MedCollab. All rights reserved.</p>
-            </div>
-                <div class="text-amber-100 flex gap-3">
-                    <p><a href="">Terms of Service</a></p>
-                    <p><a href="">Privecy Policy</a></p>
-                    <p><a href="">Cookies</a></p>
-                </div>
-            </div>
-            
 
+            <hr class="mx-0 lg:mx-10 my-6 md:my-8 border-amber-50">
+
+            <!-- Credits Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 lg:flex lg:justify-evenly lg:mx-20 py-8 md:py-10 text-amber-50 text-center">
+                <div>
+                    <h3 class="font-bold text-lg md:text-xl lg:text-2xl mb-2">Developed by</h3>
+                    <p class="text-sm md:text-base lg:text-lg">Md. Mostafizur Rahaman</p>
+                    <p class="text-xs md:text-sm lg:text-lg">ID: 22702007 <br>Electrical and Electronic Engineering <br>University of Chittagong</p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg md:text-xl lg:text-2xl mb-2">Supervisor</h3>
+                    <p class="text-sm md:text-base lg:text-lg">Dr. Md Fazlul Kader</p>
+                    <p class="text-xs md:text-sm lg:text-lg">Professor <br>Electrical and Electronic Engineering <br>University of Chittagong</p>
+                </div>
+            </div>
+
+            <hr class="mx-0 lg:mx-10 my-6 md:my-8 border-amber-50">
+
+            <!-- Copyright Section -->
+            <div class="flex flex-col md:flex-row justify-between lg:mx-20 pt-4 md:pt-6 pb-4 md:pb-6 gap-4 md:gap-0">
+                <div>
+                    <p class="text-xs md:text-sm lg:text-lg text-amber-50">&copy; 2026 MedCollab. All rights reserved.</p>
+                </div>
+                <div class="text-amber-100 flex flex-col md:flex-row gap-3 md:gap-6">
+                    <p><a href="#" class="text-xs md:text-sm lg:text-base hover:underline">Terms of Service</a></p>
+                    <p><a href="#" class="text-xs md:text-sm lg:text-base hover:underline">Privacy Policy</a></p>
+                    <p><a href="#" class="text-xs md:text-sm lg:text-base hover:underline">Cookies</a></p>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && !e.target.closest('#mobileMenu')) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>
