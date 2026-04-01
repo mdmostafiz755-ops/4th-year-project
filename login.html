@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroBCI — Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.10.1/dist/full.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Decorative background blobs -->
+<div class="page-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+</div>
+
+<!-- ── SUCCESS TOAST ─────────────────────────────────────── -->
+<div id="toast">✓ Successfully logged in!</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     LOGIN VIEW
+══════════════════════════════════════════════════════════ -->
+<div id="login-view" class="view active">
+    <div class="login-wrap">
+        <div class="brand-badge w-2/10">
+            <img src="./assets/logo.png" alt="" class="w-28">
+        </div>
+
+        <div class="login-card">
+            <h2>Welcome back</h2>
+            <p class="subtitle">Sign in to access your health dashboard</p>
+
+            <div class="field-group">
+                <label class="field-label" for="role">Login As</label>
+                <select id="role" class="field-input">
+                    <option disabled selected value="">Select your role</option>
+                    <option value="consultant">Consultant</option>
+                    <option value="patient">Patient</option>
+                    <option value="researcher">Researcher</option>
+                </select>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label" for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" class="field-input" placeholder="01XXXXXXXXX" minlength="11" maxlength="12">
+            </div>
+
+            <div class="field-group">
+                <label class="field-label" for="password">Password</label>
+                <div class="pw-wrap">
+                    <input type="password" id="password" class="field-input" placeholder="Enter password" maxlength="4">
+                    <button class="pw-toggle" id="pw-toggle" title="Show/hide password" tabindex="-1">👁</button>
+                </div>
+            </div>
+
+            <button class="login-btn" id="login-btn">Login →</button>
+
+            <div class="error-msg" id="error-msg">
+                <span>⚠</span>
+                <span id="error-text">Invalid credentials. Please try again.</span>
+            </div>
+
+            <p class="login-footer">Secure healthcare platform · NeuroBCI © 2026</p>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PHQ-9 VIEW
+══════════════════════════════════════════════════════════ -->
+<div id="phq-view" class="view">
+
+    <!-- Nav -->
+    <nav class="phq-nav">
+        <div class="nav-brand">
+            <img src="./assets/logo.png" alt="" class="w-20">
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </nav>
+
+    <!-- Hero -->
+    <div class="phq-hero">
+        <div class="greeting-chip" id="greeting-chip">👋 Welcome, Patient</div>
+        <h1>PHQ-9 Depression Screening</h1>
+        <p>A validated clinical questionnaire to identify and measure the severity of depression symptoms.</p>
+    </div>
+
+    <!-- Main card -->
+    <main class="px-4 pb-8">
+        <div class="screen-card">
+
+            <p class="intro-text">
+                Over the last <strong>2 weeks</strong>, how often have you been bothered by any of the following problems? Select the option that best describes your experience.
+            </p>
+
+            <!-- Progress -->
+            <div class="prog-row">
+                <span id="prog-label">0 of 9 answered</span>
+                <span class="prog-pct" id="prog-pct">0%</span>
+            </div>
+            <div class="prog-track">
+                <div class="prog-fill" id="prog-fill" style="width:0%"></div>
+            </div>
+
+            <!-- Questions -->
+            <div id="questions-container"></div>
+
+            <!-- Calculate button -->
+            <button class="calc-btn" id="calc-btn" onclick="handleCalculate()">Calculate My Score</button>
+
+            <!-- Results panel -->
+            <div class="results-panel" id="results-panel">
+                <h2 class="results-heading">Your Results</h2>
+
+                <div class="result-row">
+                    <div class="score-circle" id="score-circle">
+                        <span class="snum" id="result-score">—</span>
+                        <span class="sof">/ 27</span>
+                    </div>
+                    <div class="severity-card" id="severity-card">
+                        <div class="sev-label">Severity Level</div>
+                        <div class="sev-value" id="result-severity">—</div>
+                        <div class="sev-desc" id="result-desc"></div>
+                    </div>
+                </div>
+
+                <!-- Range reference -->
+                <div class="mt-5">
+                    <p style="font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color: var(--muted); margin-bottom:.6rem;">Score Reference</p>
+                    <table class="range-table" id="range-table">
+                        <thead><tr><th>Score</th><th>Severity</th></tr></thead>
+                        <tbody>
+                            <tr data-min="0"  data-max="4" ><td>0 – 4</td><td>Minimal depression</td></tr>
+                            <tr data-min="5"  data-max="9" ><td>5 – 9</td><td>Mild depression</td></tr>
+                            <tr data-min="10" data-max="14"><td>10 – 14</td><td>Moderate depression</td></tr>
+                            <tr data-min="15" data-max="19"><td>15 – 19</td><td>Moderately severe depression</td></tr>
+                            <tr data-min="20" data-max="27"><td>20 – 27</td><td>Severe depression</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <button class="calc-btn mt-4" onclick="resetForm()" style="background: linear-gradient(135deg, #065f46, #0d9488);">
+                    ↺ Retake Assessment
+                </button>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <span>ℹ️</span>
+                <span>This tool is for <strong>screening purposes only</strong> and should not be used as a diagnostic instrument. Please consult a qualified healthcare provider for proper diagnosis and treatment.</span>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="phq-footer">
+        <p>PHQ-9 © Pfizer Inc. Reproduced with permission for educational screening use.</p>
+        <p>NeuroBCI · Developed by Md. Mostafizur Rahaman · University of Chittagong</p>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
