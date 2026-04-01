@@ -1,11 +1,8 @@
 /*
-Green Minimal Color Codes
-emerald-dark: #10B981
-emerald-main: #34D399
-emerald-light: #A7F3D0
-emerald-pale: #ECFDF5
-white: #FFFFFF
-gray-text: #374151
+Green Minimal Color Codes (from blob colors)
+emerald-dark: #0d9488
+sky-blue: #38bdf8
+mint: #a7f3d0
 */
 
 * {
@@ -76,33 +73,33 @@ gray-text: #374151
 }
 
 .service-card {
-    background-color: #ECFDF5;
+    background-color: #f0fdf9;
     padding: 1.5rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    border-left: 4px solid #10B981;
+    border-left: 4px solid #0d9488;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+    box-shadow: 0 2px 8px rgba(13, 148, 136, 0.1);
 }
 
 .service-card:hover {
-    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 8px 16px rgba(13, 148, 136, 0.2);
     transform: translateY(-4px);
 }
 
 .service-card i {
-    color: #10B981;
+    color: #0d9488;
 }
 
 .service-card h4 {
-    color: #065F46;
+    color: #064e3b;
 }
 
 .service-card p {
-    color: #047857;
+    color: #0d7377;
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
@@ -126,14 +123,14 @@ gray-text: #374151
     top: 80px;
     left: 0;
     right: 0;
-    background-color: #10B981;
+    background-color: #0d9488;
     flex-direction: column;
     gap: 1rem;
     padding: 1.5rem;
     z-index: 25;
     max-height: calc(100vh - 80px);
     overflow-y: auto;
-    box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 4px 6px rgba(13, 148, 136, 0.2);
 }
 
 .mobile-menu.active {
@@ -141,7 +138,7 @@ gray-text: #374151
 }
 
 .mobile-menu a {
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1rem;
     text-decoration: none;
     padding: 0.75rem 0;
@@ -150,7 +147,7 @@ gray-text: #374151
 }
 
 .mobile-menu a:hover {
-    color: #A7F3D0;
+    color: #a7f3d0;
 }
 
 .mobile-menu a:last-child {
@@ -162,13 +159,13 @@ gray-text: #374151
     background: none;
     border: none;
     cursor: pointer;
-    color: #FFFFFF;
+    color: #ffffff;
     font-size: 1.5rem;
     transition: color 0.2s ease;
 }
 
 .hamburger-btn:hover {
-    color: #A7F3D0;
+    color: #a7f3d0;
 }
 
 @media (max-width: 768px) {
@@ -193,4 +190,44 @@ gray-text: #374151
     .mobile-menu {
         display: none !important;
     }
+}
+
+/* Decorative background blobs */
+.page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.22;
+}
+
+.blob-1 {
+    width: 520px;
+    height: 520px;
+    background: #0d9488;
+    top: -120px;
+    left: -160px;
+}
+
+.blob-2 {
+    width: 400px;
+    height: 400px;
+    background: #38bdf8;
+    bottom: -80px;
+    right: -100px;
+}
+
+.blob-3 {
+    width: 260px;
+    height: 260px;
+    background: #a7f3d0;
+    top: 40%;
+    left: 40%;
 }
